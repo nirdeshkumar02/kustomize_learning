@@ -44,7 +44,7 @@ Kustomize for kubernetes offers several advantages for managing Kubernetes confi
  
 2. Transformers are defined in the Kustomization file of the overlay or base.
 
-## To know more, Use Kustomize Docs - **`https://kubectl.docs.kubernetes.io/guides/`**
+## To know more, [Follow Kustomize Documentation](https://kubectl.docs.kubernetes.io/guides/)
 
 ## Kustomize Practicle -
 We have some basic k8s configuration under base folder. Each configuration is placed under their respective folders - api, db and monitoring. 
