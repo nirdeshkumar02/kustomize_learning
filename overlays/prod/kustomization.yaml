@@ -1,0 +1,13 @@
+bases:
+  - ../../base
+
+nameSuffix: -prod
+
+patches:
+  - path: api-patch.yaml
+    target: 
+      kind: Deployment
+      name: api-deployment
+
+components:
+  - ../../components/auth
