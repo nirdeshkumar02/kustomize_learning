@@ -54,15 +54,20 @@ We have components folder having auth and logging related docs which will be gen
 Last, We have Overlays folder; where we have patch configuration for different env like dev, stage and prod. 
 
 Here are some practicle question that I've attempted as for knowledge shake - 
-1. Assign a Label Transformer to add the label defined below to every resource across all 3 environments: **project: lambda** [Only modify one Kustomization.yaml file]
+1. Assign a Label Transformer to add the label defined below to every resource across all 3 environments: **project: lambda** [Only modify one Kustomization.yaml file].
+
 2. Please make the necessary modifications so that all resources in the prod environment should be suffixed with the word **-prod**.
-3. For development environment:
-Perform an **inline json6902 patch** to change the image of the db container in the db-deployment to be a mongo image instead of postgres.
+
+3. For development environment: Perform an **inline json6902 patch** to change the image of the db container in the db-deployment to be a mongo image instead of postgres.
+
 4. For the production environment, change the replicaCount of the api-deployment to 5 [Use a strategic merge patch in a seperate file called api-patch.yaml].
-5. Create a secretGenerator called db-secret with the following literals:
-`port=5432` and `password=mypass` then Apply an env variable to the db-deployment container called POSTGRES_PASSWORD and set the value to be the value of the password key in the newly created db-secret secretGenerator [This db secret will be common for all env so create it in /base/db/kustomization.yaml file]. 
+
+5. Create a secretGenerator called db-secret with the following literals: `port=5432` and `password=mypass` then Apply an env variable to the db-deployment container called POSTGRES_PASSWORD and set the value to be the value of the password key in the newly created db-secret secretGenerator [This db secret will be common for all env so create it in /base/db/kustomization.yaml file]. 
+
 6. In the previous section, a secretGenerator was created with the two following literals: `port=5432` and `password=mypass`. Now; In the dev overlay, update the secretGenerator so the **password=mypass** is changed to **password=devpassword** [The port literal should remain untouched.].
+
 7. Now let's add the auth component to the prod overlay and the logging component to the dev overlay.
+
 8. We want to modify the postgres container default configuration only in our staging environment. The database team has created a `postgresql.conf` file in the staging overlay directory that contains all the custom configuration.
 Load the configuration in a configMapGenerator called db-config and mount it in the db container. To add the mount, create a Strategic Merge Patch in a separate file called db-patch.yaml **(This should be done in the staging overlay only)**. Also, create a volume and volume mount called config-volume [The mountPath should be /var/lib/postgresql/config/].
 
