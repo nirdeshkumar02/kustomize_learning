@@ -41,6 +41,7 @@ Kustomize for kubernetes offers several advantages for managing Kubernetes confi
 1. Start by creating a Component directory containing your component configuration. This directory should include all the component YAML files for your overlays.
  
 2. Component can be helpful where different overlays required different component like In Prod env, we want logging but not on dev and staging; so in prod kustomization.yaml we can add component section refers to logging.
+
 Example - we have a basic web application; as org grows; we have introduced 3 edition - Internal, Community and Enterprise which act as overlays. Now, Community edition wants External-db component and reCaptcha in our application. Enterprise addition wants External DB with LDAP Support. and in Last, Internal Edition is for Org Developer, where they can perform test.
 So By creating External_DB, LDAP and ReCaptcha component; we can release the product for different editions with there requirement without touching base application; as it will be same for all. 
 
